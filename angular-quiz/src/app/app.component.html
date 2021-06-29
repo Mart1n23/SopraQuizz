@@ -1,31 +1,9 @@
-<nav>
-  <a [routerLink]="['/home']" routerLinkActive="active" class="btn btn-link"
-    >home</a
-  >
-  <a
-    *ngIf="isLogged()"
-    [routerLink]="['/produits']"
-    routerLinkActive="active"
-    class="btn btn-link"
-    >produits</a
-  >
-  <a
-    *ngIf="isLogged()"
-    [routerLink]="['/fournisseurs']"
-    routerLinkActive="active"
-    class="btn btn-link"
-    >fournisseurs</a
-  >
-  <a
-    *ngIf="!isLogged()"
-    [routerLink]="['/login']"
-    routerLinkActive="active"
-    class="btn btn-link"
-    >login</a
-  >
-  <button *ngIf="isLogged()" (click)="logoff()" class="btn btn-link">
-    deconnection
-  </button>
-</nav>
-
-<router-outlet></router-outlet>
+<div>
+  <h1>C'EST L'HEURE DE QUIZER LES GARS</h1>
+</div>
+<div>
+  <app-tableau-principal></app-tableau-principal>
+</div>
+<div>
+  <app-classement-semaine></app-classement-semaine>
+</div>

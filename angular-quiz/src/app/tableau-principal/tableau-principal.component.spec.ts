@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditFournisseurComponent } from './edit-fournisseur.component';
+import { TableauPrincipalComponent } from './tableau-principal.component';
 
-describe('EditFournisseurComponent', () => {
-  let component: EditFournisseurComponent;
-  let fixture: ComponentFixture<EditFournisseurComponent>;
+describe('TableauPrincipalComponent', () => {
+  let component: TableauPrincipalComponent;
+  let fixture: ComponentFixture<TableauPrincipalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditFournisseurComponent ]
+      declarations: [ TableauPrincipalComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditFournisseurComponent);
+    fixture = TestBed.createComponent(TableauPrincipalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
