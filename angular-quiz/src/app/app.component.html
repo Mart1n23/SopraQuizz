@@ -1,31 +1,27 @@
 <nav>
   <a [routerLink]="['/home']" routerLinkActive="active" class="btn btn-link"
-    >home</a
+    >Sopra-Quiz</a
   >
+  <a [routerLink]="['/quiz']" class="btn btn-link">Quizs</a>
   <a
-    *ngIf="isLogged()"
-    [routerLink]="['/produits']"
+    [routerLink]="['/inscription']"
     routerLinkActive="active"
     class="btn btn-link"
-    >produits</a
+    >Incription</a
   >
   <a
-    *ngIf="isLogged()"
-    [routerLink]="['/fournisseurs']"
+    [routerLink]="['/connexion']"
     routerLinkActive="active"
     class="btn btn-link"
-    >fournisseurs</a
+    >Connection</a
   >
-  <a
-    *ngIf="!isLogged()"
-    [routerLink]="['/login']"
-    routerLinkActive="active"
-    class="btn btn-link"
-    >login</a
+  <a [routerLink]="['/compte']" routerLinkActive="active" class="btn btn-link"
+    >Compte</a
   >
-  <button *ngIf="isLogged()" (click)="logoff()" class="btn btn-link">
-    deconnection
-  </button>
 </nav>
-
-<router-outlet></router-outlet>
+<div>
+  <app-tableau-principal></app-tableau-principal>
+</div>
+<div>
+  <app-classement-semaine></app-classement-semaine>
+</div>
