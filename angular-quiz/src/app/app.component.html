@@ -2,26 +2,17 @@
   <a [routerLink]="['/home']" routerLinkActive="active" class="btn btn-link"
     >Sopra-Quiz</a
   >
-  <a [routerLink]="['/quiz']" class="btn btn-link">Quizs</a>
   <a
-    [routerLink]="['/inscription']"
+    [routerLink]="['/classement']"
     routerLinkActive="active"
     class="btn btn-link"
-    >Incription</a
+    >Classement</a
   >
-  <a
-    [routerLink]="['/connexion']"
-    routerLinkActive="active"
-    class="btn btn-link"
-    >Connection</a
+  <a [routerLink]="['/quiz']" routerLinkActive="active" class="btn btn-link">
+    Quizs</a
   >
-  <a [routerLink]="['/compte']" routerLinkActive="active" class="btn btn-link"
-    >Compte</a
-  >
+  <app-loged *ngIf="estConnecte()"></app-loged>
+  <app-notloged *ngIf="!estConnecte()"></app-notloged>
 </nav>
-<div>
-  <app-tableau-principal></app-tableau-principal>
-</div>
-<div>
-  <app-classement-semaine></app-classement-semaine>
-</div>
+
+<router-outlet></router-outlet>
