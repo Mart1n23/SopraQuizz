@@ -12,6 +12,7 @@ import { CompteComponent } from './compte/compte.component';
 import { QuizsComponent } from './quizs/quizs.component';
 import { FormsModule } from '@angular/forms';
 import { routes } from './routes';
+import { ClassementComponent } from './classement/classement.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { routes } from './routes';
     ResauxComponent,
     CompteComponent,
     QuizsComponent,
+    ClassementComponent,
   ],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes)],
   providers: [],

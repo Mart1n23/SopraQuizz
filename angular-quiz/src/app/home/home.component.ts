@@ -1,5 +1,6 @@
 import { DemoService } from '../services/demo.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,11 +9,15 @@ import { Component, OnInit } from '@angular/core';
   providers: [{ provide: DemoService, useClass: DemoService }],
 })
 export class HomeComponent implements OnInit {
-  message: string = '';
+  message: string = 'Wow ça marche c est ouf';
 
-  constructor(private monService: DemoService) {}
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    this.message = this.monService.hello();
+  ngOnInit(): void {}
+
+  go() {
+    this.router.navigate(['/param', this.message], {
+      queryParams: { prenom: this.message },
+    });
   }
 }
