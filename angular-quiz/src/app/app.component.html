@@ -2,26 +2,32 @@
   <a [routerLink]="['/home']" routerLinkActive="active" class="btn btn-link"
     >Sopra-Quiz</a
   >
-  <a [routerLink]="['/quiz']" class="btn btn-link">Quizs</a>
+  <a
+    [routerLink]="['/classement']"
+    routerLinkActive="active"
+    class="btn btn-link"
+    >Classement</a
+  >
+  <a [routerLink]="['/quiz']" routerLinkActive="active" class="btn btn-link">
+    Quizs</a
+  >
+
   <a
     [routerLink]="['/inscription']"
     routerLinkActive="active"
     class="btn btn-link"
-    >Incription</a
+  >
+    Incription</a
   >
   <a
     [routerLink]="['/connexion']"
     routerLinkActive="active"
     class="btn btn-link"
-    >Connection</a
+    >Connexion</a
   >
   <a [routerLink]="['/compte']" routerLinkActive="active" class="btn btn-link"
     >Compte</a
   >
 </nav>
-<div>
-  <app-tableau-principal></app-tableau-principal>
-</div>
-<div>
-  <app-classement-semaine></app-classement-semaine>
-</div>
+
+<router-outlet></router-outlet>
