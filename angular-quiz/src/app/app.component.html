@@ -1,6 +1,24 @@
-<div>
-  <h1>C'EST L'HEURE DE QUIZER LES GARS</h1>
-</div>
+<nav>
+  <a [routerLink]="['/home']" routerLinkActive="active" class="btn btn-link"
+    >Sopra-Quiz</a
+  >
+  <a [routerLink]="['/quiz']" class="btn btn-link">Quizs</a>
+  <a
+    [routerLink]="['/inscription']"
+    routerLinkActive="active"
+    class="btn btn-link"
+    >Incription</a
+  >
+  <a
+    [routerLink]="['/connexion']"
+    routerLinkActive="active"
+    class="btn btn-link"
+    >Connection</a
+  >
+  <a [routerLink]="['/compte']" routerLinkActive="active" class="btn btn-link"
+    >Compte</a
+  >
+</nav>
 <div>
   <app-tableau-principal></app-tableau-principal>
 </div>
