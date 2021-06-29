@@ -1,36 +1,31 @@
-import { routes } from './routes';
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { ListProduitComponent } from './list-produit/list-produit.component';
+import { TableauPrincipalComponent } from './tableau-principal/tableau-principal.component';
+import { ClassementSemaineComponent } from './classement-semaine/classement-semaine.component';
 import { HomeComponent } from './home/home.component';
-import { EditProduitComponent } from './edit-produit/edit-produit.component';
-import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ListFournisseurComponent } from './fournisseur/list-fournisseur/list-fournisseur.component';
-import { EditFournisseurComponent } from './fournisseur/edit-fournisseur/edit-fournisseur.component';
-import { FormulaireCodeComponent } from './formulaire/formulaire-code/formulaire-code.component';
-import { LoginComponent } from './login/login.component';
+import { InscriptionComponent } from './inscription/inscription.component';
+import { ConnexionComponent } from './connexion/connexion.component';
+import { ResauxComponent } from './resaux/resaux.component';
+import { CompteComponent } from './compte/compte.component';
+import { QuizsComponent } from './quizs/quizs.component';
+import { FormsModule } from '@angular/forms';
+import { routes } from './routes';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListProduitComponent,
+    TableauPrincipalComponent,
+    ClassementSemaineComponent,
+    InscriptionComponent,
+    ConnexionComponent,
     HomeComponent,
-    EditProduitComponent,
-    ListFournisseurComponent,
-    EditFournisseurComponent,
-    FormulaireCodeComponent,
-    LoginComponent,
+    ResauxComponent,
+    CompteComponent,
+    QuizsComponent,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    RouterModule.forRoot(routes),
-  ],
+  imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes)],
   providers: [],
   bootstrap: [AppComponent],
 })
