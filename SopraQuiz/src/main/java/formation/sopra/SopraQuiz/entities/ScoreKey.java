@@ -14,10 +14,11 @@ import formation.sopra.SopraQuiz.entities.views.Views;
 @Embeddable
 public class ScoreKey implements Serializable {
 	
+	@JsonView({Views.QuizWithScore.class, Views.ScoreWithKey.class})
 	@ManyToOne
     @JoinColumn(name = "score_personne_id",foreignKey=@ForeignKey(name="score_personne_id_fk"))
 	private Personne personne;
-	@JsonView(Views.PersonneWithScore.class)
+	@JsonView({Views.PersonneWithScore.class, Views.ScoreWithKey.class})
 	@ManyToOne
     @JoinColumn(name = "score_quiz_id",foreignKey=@ForeignKey(name="score_quiz_id_fk"))
 	private Quiz quiz;

@@ -19,9 +19,9 @@ public class Score {
 	
 	public Score() {}
 
-	public Score(ScoreKey key) {
+	public Score(ScoreKey key, int value) {
 		this.key = key;
-		this.value = 0;
+		this.value = value;
 	}
 
 	public ScoreKey getKey() {
