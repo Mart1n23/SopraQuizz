@@ -11,23 +11,8 @@
   <a [routerLink]="['/quiz']" routerLinkActive="active" class="btn btn-link">
     Quizs</a
   >
-
-  <a
-    [routerLink]="['/inscription']"
-    routerLinkActive="active"
-    class="btn btn-link"
-  >
-    Incription</a
-  >
-  <a
-    [routerLink]="['/connexion']"
-    routerLinkActive="active"
-    class="btn btn-link"
-    >Connexion</a
-  >
-  <a [routerLink]="['/compte']" routerLinkActive="active" class="btn btn-link"
-    >Compte</a
-  >
+  <app-loged *ngIf="estConnecte()"></app-loged>
+  <app-notloged *ngIf="!estConnecte()"></app-notloged>
 </nav>
 
 <router-outlet></router-outlet>

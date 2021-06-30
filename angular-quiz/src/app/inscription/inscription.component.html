@@ -1,1 +1,67 @@
-<p>inscription works!</p>
+<h1 style="text-align: center">Inscription</h1>
+<div class="login">
+  <h2 class="login-header">Creation d'un nouveau compte</h2>
+  <form class="login-container" (ngSubmit)="send()">
+    <p>
+      <input type="prenom" placeholder="Prenom" formControlName="prenom" />
+    </p>
+
+    <div class="help-block">
+      <div>
+        <font color="red">Le prenom est requis</font>
+      </div>
+
+      <p>
+        <input type="nom" placeholder="Nom" formControlName="nom" />
+      </p>
+
+      <div class="help-block">
+        <div>
+          <font color="red">Le nom est requis</font>
+        </div>
+      </div>
+
+      <p>
+        <input type="email" placeholder="Email" formControlName="email" />
+      </p>
+
+      <div class="help-block">
+        <div>
+          <font color="red">L'email est requis</font>
+        </div>
+      </div>
+
+      <p>
+        <input
+          type="password"
+          placeholder="Mot de passe"
+          formControlName="password"
+        />
+      </p>
+
+      <div class="help-block">
+        <div>
+          <font color="red">Mot de passe requis</font>
+        </div>
+      </div>
+
+      <p>
+        <input
+          type="password"
+          placeholder="Confirmer le mot de passe"
+          formControlName="password"
+        />
+      </p>
+
+      <div class="help-block">
+        <div>
+          <font color="red">Le mot de passe ne correspond pas</font>
+        </div>
+      </div>
+
+      <p>
+        <input type="submit" value="Enregistrement" />
+      </p>
+    </div>
+  </form>
+</div>
