@@ -72,12 +72,12 @@ public class PersonneService {
 			Optional<Personne> opt = personneRepository.findByIdWithScore(id);
 			if (opt.isPresent()) {
 				Personne p = opt.get();
+				scoreRepository.deleteByPersonne(p);
 				p.getScores().stream().forEach(s -> {
 					if(!s.getKey().getQuiz().isRanked()) {
 						quizRepository.delete(s.getKey().getQuiz());
 					}
 				});
-				scoreRepository.deleteByPersonne(p);
 				personneRepository.delete(p);
 			}
 		}

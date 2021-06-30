@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -36,9 +37,8 @@ public class Personne {
 	private String prenom;
 	@JsonView(Views.Common.class)
 	@Column(name="email")
-	@NotNull
+	@NotEmpty
 	private String mail; //get by mail
-	@JsonView(Views.Common.class)
 	@Column(name="password")
 	private String password;
 	@JsonView(Views.Common.class)

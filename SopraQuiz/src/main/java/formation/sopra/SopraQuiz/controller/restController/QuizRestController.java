@@ -9,6 +9,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,6 +27,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import formation.sopra.SopraQuiz.config.PersonneSpring;
 import formation.sopra.SopraQuiz.entities.Personne;
 import formation.sopra.SopraQuiz.entities.Question;
 import formation.sopra.SopraQuiz.entities.Quiz;
@@ -63,6 +65,12 @@ public class QuizRestController {
 	public List<Quiz> getAllQuizWithScores() {
 		return getAll();
 	}
+	
+	@GetMapping("/question")
+	@JsonView(Views.QuizWithQuestion.class)
+	public List<Quiz> getAllQuizWithQuestions() {
+		return getAll();
+	}
 
 	private List<Quiz> getAll() {
 		return quizService.getAll();
@@ -79,6 +87,12 @@ public class QuizRestController {
 	public Quiz getQuizWithScoreById(@PathVariable Integer id) {
 		return getById(id);
 	}
+	
+	@GetMapping("/{id}/question")
+	@JsonView(Views.QuizWithQuestion.class)
+	public Quiz getQuizWithQuestionsById(@PathVariable Integer id) {
+		return getById(id);
+	}
 
 	private Quiz getById(Integer id) {
 		Quiz q = quizService.getById(id);
@@ -91,28 +105,29 @@ public class QuizRestController {
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping("")
 	@JsonView(Views.Common.class)
-	public Quiz create(@Valid @RequestBody Quiz quiz, BindingResult br) {
+	public Quiz create(@Valid @RequestBody Quiz quiz, BindingResult br) { //, @AuthenticationPrincipal PersonneSpring persoSpring) {
 		if(br.hasErrors()) {
 			throw new QuizInvalidException();
 		}
 		
-		List<Question> listeQuestions = questionService.getAll(); //Ecrire algo choix aleatoire
+		// Ecrire algo choix aleatoire
+		List<Question> listeQuestions = questionService.getAll(); 
 		quiz.setQuestions(listeQuestions);
 		
-		Personne personne = personneService.getById(103); //A remplacer par un utilisateur spring
-		
-		Score score = new Score(new ScoreKey(personne,quiz));
-		List<Score> scores = new ArrayList();
-		if(quiz.getScores()!=null) {
-			scores = quiz.getScores();
-		}
-		scores.add(score);
-		quiz.setScores(scores);
+//		Personne personne = persoSpring.getPersonne();
+//		
+//		Score score = new Score(new ScoreKey(personne,quiz), 0);
+//		List<Score> scores = new ArrayList();
+//		if(quiz.getScores()!=null) {
+//			scores = quiz.getScores();
+//		}
+//		scores.add(score);
+//		quiz.setScores(scores);
 		
 		quiz = quizService.save(quiz);
 		
-		//score sauvegardé après le quiz !! => ScoreRestCOntroller
-		scoreService.save(score);
+		// Le score est sauvegardé après le quiz ! => ScoreRestController
+//		scoreService.save(score);
 		return quiz;
 	}
 
