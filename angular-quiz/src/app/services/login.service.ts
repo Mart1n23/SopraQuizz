@@ -1,3 +1,4 @@
+import { Personne } from './../personne';
 import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -15,6 +16,12 @@ export class LoginService {
     });
     return this.http.get<boolean>('http://localhost:8080/boot/api/login', {
       headers: header,
+    });
+  }
+
+  public signUp(personne: Personne): Observable<any> {
+    return this.http.post('http://localhost:8080/boot/api/personne', {
+      personne,
     });
   }
 }
