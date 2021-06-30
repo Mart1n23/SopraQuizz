@@ -111,7 +111,7 @@ public class QuizRestController {
 		
 		quiz = quizService.save(quiz);
 		
-		//score sauvegardé après le quiz !!!
+		//score sauvegardé après le quiz !! => ScoreRestCOntroller
 		scoreService.save(score);
 		return quiz;
 	}

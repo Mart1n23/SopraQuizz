@@ -18,11 +18,11 @@
   margin-right: auto;
   margin-left: auto;
   border: 12px solid transparent;
-  border-bottom-color: rgb(15, 66, 107);
+  border-bottom-color: #7b38d8;
 }
 
 .login-header {
-  background: rgb(12, 77, 129);
+  background: #7b38d8;
   padding: 20px;
   font-size: 1.4em;
   font-weight: normal;
@@ -72,9 +72,9 @@
 }
 
 .login input[type="submit"]:hover {
-  background: #17c;
+  background: #7b38d8;
 }
 
 .login input[type="submit"]:focus {
-  border-color: #05a;
+  border-color: #7b38d8;
 }

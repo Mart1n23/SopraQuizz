@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TableauPrincipalComponent } from './tableau-principal.component';
+import { IntroQuizzComponent } from './intro-quizz.component';
 
-describe('TableauPrincipalComponent', () => {
-  let component: TableauPrincipalComponent;
-  let fixture: ComponentFixture<TableauPrincipalComponent>;
+describe('IntroQuizzComponent', () => {
+  let component: IntroQuizzComponent;
+  let fixture: ComponentFixture<IntroQuizzComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TableauPrincipalComponent ]
+      declarations: [ IntroQuizzComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TableauPrincipalComponent);
+    fixture = TestBed.createComponent(IntroQuizzComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
