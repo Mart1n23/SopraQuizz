@@ -8,11 +8,18 @@ import { HomeComponent } from './home/home.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { ResauxComponent } from './resaux/resaux.component';
-import { CompteComponent } from './compte/compte.component';
 import { QuizsComponent } from './quizs/quizs.component';
-import { FormsModule } from '@angular/forms';
-import { routes } from './routes';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule, routes } from './routes';
 import { ClassementComponent } from './classement/classement.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UtilisateurComponent } from './utilisateur/utilisateur.component';
+import { ErreurComponent } from './erreur/erreur.component';
+import { PersonneComponent } from './personne/personne.component';
+import { LogedComponent } from './loged/loged.component';
+import { NotlogedComponent } from './notloged/notloged.component';
+import { CompteComponent } from './compte/compte.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -23,11 +30,24 @@ import { ClassementComponent } from './classement/classement.component';
     ConnexionComponent,
     HomeComponent,
     ResauxComponent,
-    CompteComponent,
     QuizsComponent,
     ClassementComponent,
+    UtilisateurComponent,
+    ErreurComponent,
+    PersonneComponent,
+    LogedComponent,
+    NotlogedComponent,
+    CompteComponent,
+    AdminComponent,
   ],
-  imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes)],
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
+    AppRoutingModule,
+    RouterModule.forRoot(routes),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

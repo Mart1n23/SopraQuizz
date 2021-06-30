@@ -1,6 +1,4 @@
-import { ClassementSemaineComponent } from './../classement-semaine/classement-semaine.component';
 import { Component, OnInit } from '@angular/core';
-import { TableauPrincipalComponent } from '../tableau-principal/tableau-principal.component';
 
 @Component({
   selector: 'app-classement',
