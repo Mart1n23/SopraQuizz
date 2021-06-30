@@ -1,14 +1,24 @@
-<nav>
-  <a [routerLink]="['/home']" routerLinkActive="active" class="btn btn-link"
+<nav class="navbar">
+  <a
+    [routerLink]="['/home']"
+    routerLinkActive="active"
+    class="btn btn-link"
+    style="margin-left: 10%"
     >Sopra-Quiz</a
   >
   <a
     [routerLink]="['/classement']"
     routerLinkActive="active"
     class="btn btn-link"
+    style="margin-right: 5%"
     >Classement</a
   >
-  <a [routerLink]="['/quiz']" routerLinkActive="active" class="btn btn-link">
+  <a
+    [routerLink]="['/quizs']"
+    routerLinkActive="active"
+    class="btn btn-link"
+    style="margin-right: 20%"
+  >
     Quizs</a
   >
   <app-loged *ngIf="estConnecte()"></app-loged>
