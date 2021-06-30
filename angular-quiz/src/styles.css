@@ -177,7 +177,7 @@ address {
 
 ol,
 ul {
-  padding-left: 2rem;
+  padding-left: 15rem;
 }
 
 ol,
@@ -626,6 +626,12 @@ progress {
 .figure-caption {
   font-size: 0.875em;
   color: #6c757d;
+}
+.onglet {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  margin-left: 6rem;
+  margin-right: 6rem;
 }
 
 .container,
@@ -1978,6 +1984,7 @@ progress {
     --bs-gutter-y: 3rem;
   }
 }
+
 .table {
   --bs-table-bg: transparent;
   --bs-table-accent-bg: transparent;
@@ -1987,11 +1994,13 @@ progress {
   --bs-table-active-bg: rgba(0, 0, 0, 0.1);
   --bs-table-hover-color: #212529;
   --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
-  width: 100%;
-  margin-bottom: 1rem;
+
+  width: 30%;
+  margin-bottom: 50%;
+  margin-left: 5%;
   color: #212529;
   vertical-align: top;
-  border-color: #dee2e6;
+  border-color: black;
 }
 .table > :not(caption) > * > * {
   padding: 0.5rem 0.5rem;
@@ -2310,6 +2319,42 @@ progress {
 }
 .form-control:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
   background-color: #dde0e3;
+}
+
+#global {
+  width: 100%;
+}
+#global #gauche {
+  float: left;
+  width: 60%;
+}
+#global #droite {
+  margin-left: 60%;
+}
+.textarea {
+  height: 200px;
+  width: 400px;
+  background-color: lightcyan;
+  border-radius: 5px;
+}
+
+button {
+  display: inline-block;
+  background-color: #7b38d8;
+  border-radius: 10px;
+  border: 4px double #cccccc;
+  color: #eeeeee;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+
+  width: 200px;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 50px;
 }
 
 .form-control-plaintext {
@@ -7633,6 +7678,10 @@ fieldset:disabled .btn {
   line-height: 1.25 !important;
 }
 
+.text-align {
+  text-align: center;
+}
+
 .lh-base {
   line-height: 1.5 !important;
 }
@@ -11225,7 +11274,7 @@ html {
   height: 0.25rem;
   background-color: #2c3e50;
   border-radius: 1rem;
-  border-color: #2c3e50;
+  border-color: chartreuse;
 }
 .divider-custom .divider-custom-line:first-child {
   margin-right: 1rem;
@@ -11244,6 +11293,10 @@ html {
   color: #fff;
 }
 
+.div-background {
+  background-color: darkcyan;
+  height: 5rem;
+}
 .btn-xl {
   padding: 1rem 1.75rem;
   font-size: 1.25rem;

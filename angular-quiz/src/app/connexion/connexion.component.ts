@@ -1,6 +1,7 @@
-import { Router } from '@angular/router';
-import { LoginService } from './../services/login.service';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ConnexionService } from '../connexion.service';
 
 @Component({
   selector: 'app-connexion',
@@ -8,25 +9,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./connexion.component.css'],
 })
 export class ConnexionComponent implements OnInit {
-  login: string = '';
-  password: string = '';
-  message: string = '';
-  constructor(private loginService: LoginService, private router: Router) {}
+  loginForm!: FormGroup;
+  isSubmitted = false;
+  constructor(
+    private ConnexionService: ConnexionService,
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) {}
 
-  ngOnInit(): void {}
-  send() {
-    this.loginService.login(this.login, this.password).subscribe(
-      (result) => {
-        localStorage.setItem('login', this.login);
-        localStorage.setItem(
-          'auth',
-          'Basic ' + btoa(this.login + ':' + this.password)
-        );
-        this.router.navigate(['/home']);
-      },
-      (error) => {
-        this.message = 'infos incorrect';
-      }
-    );
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+  }
+  get formControls() {
+    return this.loginForm.controls;
+  }
+  seConnecter() {
+    console.log(this.loginForm.value);
+    this.isSubmitted = true;
+    if (this.loginForm.invalid) {
+      return;
+    }
+    this.ConnexionService.seConnecter(this.loginForm.value);
+    this.router.navigateByUrl('/admin');
   }
 }
