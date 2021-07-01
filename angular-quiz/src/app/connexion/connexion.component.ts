@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConnexionService } from '../connexion.service';
 
@@ -19,8 +24,11 @@ export class ConnexionComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+      ]),
     });
   }
   get formControls() {
@@ -33,6 +41,20 @@ export class ConnexionComponent implements OnInit {
       return;
     }
     this.ConnexionService.seConnecter(this.loginForm.value);
-    this.router.navigateByUrl('/admin');
   }
+  /*
+  checkMail(): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+      return this.utilisateurService.checkMail(control.value).pipe(
+        debounceTime(500),
+        map((fournisseur: Fournisseur) => {
+          if (this.fournisseur.contact != fournisseur.contact) {
+            return fournisseur.id ? { mailExist: true } : null;
+          } else {
+            return null;
+          }
+        })
+      );
+    };
+  }*/
 }
