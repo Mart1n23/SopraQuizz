@@ -11,11 +11,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DerouleQuizComponent implements OnInit {
   quiz: Observable<Quiz> | any = null;
-  questions : Observable<Question[]> | any = null;
+  questions: Observable<Question[]> | any = null;
 
-  constructor(
-    private quizService: QuizService
-  ) {}
+  constructor(private quizService: QuizService) {}
 
   ngOnInit(): void {
     this.quiz = this.quizService.getWithQuestions(103);
@@ -23,5 +21,4 @@ export class DerouleQuizComponent implements OnInit {
     this.questions = this.quiz.questions;
     console.log(this.questions);
   }
-
 }
