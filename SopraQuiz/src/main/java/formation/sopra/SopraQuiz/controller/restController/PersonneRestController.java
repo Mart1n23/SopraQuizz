@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -38,6 +39,8 @@ public class PersonneRestController {
 
 	@Autowired
 	PersonneService personneService;
+	@Autowired
+	PasswordEncoder pwdEncoder;
 
 	@GetMapping("")
 	@JsonView(Views.Common.class)
@@ -82,6 +85,7 @@ public class PersonneRestController {
 		if(br.hasErrors()) {
 			throw new PersonneInvalidException();
 		}
+		personne.setPassword(pwdEncoder.encode(personne.getPassword()));
 		personne = personneService.save(personne);
 		return personne;
 	}
@@ -99,6 +103,9 @@ public class PersonneRestController {
 			throw new PersonneInvalidException();
 		}
 		personne.setId(id);
+		if(!personne.getPassword().isEmpty()) {
+			personne.setPassword(pwdEncoder.encode(personne.getPassword()));
+		}
 		personne = personneService.save(personne);
 		return personne;
 	}
@@ -116,6 +123,9 @@ public class PersonneRestController {
 //			if(key.equals("role")) {
 //				ReflectionUtils.setField(field, personneBDD, Role.valueOf((String) value));
 //			}
+			if(key.equals("password")) {
+				value = pwdEncoder.encode(value.toString());
+			}
 			if(!key.equals("role")) {
 				ReflectionUtils.setField(field, personneBDD, value);
 			}

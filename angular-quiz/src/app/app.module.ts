@@ -19,6 +19,9 @@ import { LogedComponent } from './loged/loged.component';
 import { NotlogedComponent } from './notloged/notloged.component';
 import { CompteComponent } from './compte/compte.component';
 import { AdminComponent } from './admin/admin.component';
+import { IntroQuizzComponent } from './intro-quizz/intro-quizz.component';
+import { DerouleQuizComponent } from './deroule-quiz/deroule-quiz.component';
+import { FinalQuizComponent } from './final-quiz/final-quiz.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,7 @@ import { AdminComponent } from './admin/admin.component';
     AdminComponent,
     IntroQuizzComponent,
     DerouleQuizComponent,
+    FinalQuizComponent,
   ],
   imports: [
     BrowserModule,
