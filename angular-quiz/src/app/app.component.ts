@@ -14,4 +14,5 @@ export class AppComponent {
   estConnecte(): boolean {
     return localStorage.getItem('login') ? true : false;
   }
+
 }

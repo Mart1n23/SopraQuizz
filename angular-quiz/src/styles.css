@@ -2001,11 +2001,12 @@ progress {
   --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
 
   width: 30%;
-  margin-bottom: 50%;
-  margin-left: 5%;
+  margin:auto;
+  /*margin-bottom: 50%;
+  margin-left: 5%;*/
   color: #212529;
   vertical-align: top;
-  border-color: black;
+  border-color: white;
 }
 .table > :not(caption) > * > * {
   padding: 0.5rem 0.5rem;

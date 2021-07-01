@@ -1,3 +1,7 @@
+import { Question } from './../model/question';
+import { QuizService } from './../services/quiz.service';
+import { Observable } from 'rxjs';
+import { Quiz } from './../model/quiz';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +10,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./deroule-quiz.component.css'],
 })
 export class DerouleQuizComponent implements OnInit {
-  constructor() {}
+  quiz: Observable<Quiz> | any = null;
+  questions : Observable<Question[]> | any = null;
 
-  ngOnInit(): void {}
+  constructor(
+    private quizService: QuizService
+  ) {}
+
+  ngOnInit(): void {
+    this.quiz = this.quizService.getWithQuestions(103);
+    console.log(this.quiz.nom);
+    this.questions = this.quiz.questions;
+    console.log(this.questions);
+  }
+
 }

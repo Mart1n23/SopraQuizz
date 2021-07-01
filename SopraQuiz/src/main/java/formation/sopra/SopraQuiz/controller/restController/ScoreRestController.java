@@ -34,7 +34,7 @@ public class ScoreRestController {
 
 	@PostMapping("/{idQuiz}")
 	@JsonView(Views.ScoreWithKey.class)
-	public Score quizWithScoreUpdate(@RequestBody Score score, @PathVariable Integer idQuiz, @AuthenticationPrincipal PersonneSpring persoSpring) {
+	public Score quizWithScoreSave(@RequestBody Score score, @PathVariable Integer idQuiz, @AuthenticationPrincipal PersonneSpring persoSpring) {
 		Quiz quizBDD = quizService.getById(idQuiz);
 		if(quizBDD.getId() == null) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
