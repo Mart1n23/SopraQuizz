@@ -3,13 +3,10 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-deroule-quiz',
   templateUrl: './deroule-quiz.component.html',
-  styleUrls: ['./deroule-quiz.component.css']
+  styleUrls: ['./deroule-quiz.component.css'],
 })
 export class DerouleQuizComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

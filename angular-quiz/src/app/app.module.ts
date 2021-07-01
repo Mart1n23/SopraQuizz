@@ -19,6 +19,7 @@ import { LogedComponent } from './loged/loged.component';
 import { NotlogedComponent } from './notloged/notloged.component';
 import { CompteComponent } from './compte/compte.component';
 import { AdminComponent } from './admin/admin.component';
+import { FinalQuizComponent } from './final-quiz/final-quiz.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { AdminComponent } from './admin/admin.component';
     CompteComponent,
     AdminComponent,
     IntroQuizzComponent,
+    FinalQuizComponent,
     DerouleQuizComponent,
   ],
   imports: [

@@ -1,14 +1,24 @@
 package formation.sopra.SopraQuiz.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import formation.sopra.SopraQuiz.services.AuthService;
 
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+	
+	@Autowired
+	AuthService authService;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -21,27 +31,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.and()
 				.authorizeRequests()
 					.antMatchers(HttpMethod.OPTIONS).anonymous() //angular envoie une requête OPTIONS automatiquement, il faut donc l'autoriser !
-					.antMatchers("/api/fournisseur","/api/fournisseur/**").hasRole("ADMIN")
-					.antMatchers(HttpMethod.POST, "/api/commande").hasRole("USER")
-					.antMatchers(HttpMethod.POST, "/api/client").anonymous()
-					.antMatchers(HttpMethod.POST, "/api/produit").hasRole("ADMIN")
-					.antMatchers(HttpMethod.PUT, "/api/produit/**").hasRole("ADMIN")
-					.antMatchers(HttpMethod.DELETE, "/api/produit/**").hasRole("ADMIN")
-					.antMatchers("/api/produit","/api/produit/**").hasRole("ADMIN")
+					.antMatchers(HttpMethod.POST, "/api/personne").anonymous()
+					.antMatchers(HttpMethod.DELETE, "/api/question/**").hasRole("ADMIN")
+					.antMatchers(HttpMethod.DELETE, "/api/quiz/**").hasRole("ADMIN")
 					.antMatchers("/api","/api/**").authenticated()
+//					.antMatchers("/api","/api/**").permitAll()
 				.and()
 				.httpBasic()
 			.and()
 			.antMatcher("/**").
 				authorizeRequests().
-					antMatchers("/","/home","/commande/**","/client/inscription","/client/save").permitAll().
-					
-					antMatchers("/client/history","/client/history/details").authenticated().
-					
-					antMatchers("/produit","/produit/**").hasAnyRole("ADMIN"). //Spring le gère automatiquement comme ROLE_ADMIN
-					antMatchers("/client", "/client/**").hasAnyRole("ADMIN").
-					antMatchers("/fournisseur", "/fournisseur/**").hasAnyRole("ADMIN").
-					
+					antMatchers("/","/home","/personne/inscription","/personne/save").permitAll().					
 					anyRequest().authenticated().
 				and().
 				formLogin().
@@ -56,5 +56,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		//formatter:on
 	}
 	
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(authService);
+	}
 	
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 }

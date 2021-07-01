@@ -9,9 +9,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./inscription.component.css'],
 })
 export class InscriptionComponent implements OnInit {
-  registerForm: FormGroup = new FormGroup({});
+  registerForm!: FormGroup;
   loading = false;
-  submitted = false;
+  isSubmitted = false;
   personne: Personne = new Personne();
   @Output('inscription')
   inscription: EventEmitter<Personne> = new EventEmitter<Personne>();
@@ -28,10 +28,7 @@ export class InscriptionComponent implements OnInit {
         Validators.minLength(2),
       ]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      confirmPassword: new FormControl('', [
-        Validators.required,
-        Validators.minLength(6),
-      ]),
+      confirmPassword: new FormControl('', [Validators.required]),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(6),
@@ -42,5 +39,8 @@ export class InscriptionComponent implements OnInit {
     console.log(this.registerForm);
     //this.inscription.emit(this.personne);
     this.personne = new Personne(...this.registerForm.value);
+  }
+  get formControls() {
+    return this.registerForm.controls;
   }
 }

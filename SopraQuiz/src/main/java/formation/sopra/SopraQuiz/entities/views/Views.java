@@ -17,4 +17,8 @@ public class Views {
 	public static class QuizWithQuestion extends Common { 
 
 	}
+	
+	public static class ScoreWithKey extends Common { 
+
+	}
 }

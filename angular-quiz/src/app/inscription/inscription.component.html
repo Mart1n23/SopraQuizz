@@ -28,18 +28,18 @@
       <input type="email" placeholder="Email" formControlName="email" />
     </p>
 
+    <div class="help-block" *ngIf="isSubmitted && formControls.email.errors">
+      <font color="red">L'email n'est pas valide</font>
+    </div>
     <div
       class="help-block"
-      *ngIf="!registerForm.value.email && registerForm.touched"
+      *ngIf="formControls.email.errors && formControls.email.touched"
     >
-      <font color="red">L'email est requis</font>
-    </div>
-    <!--   <div class="help-block" *ngIf="!registerForm.value.email">
-        <div>
-          <font color="red">L'email n'est pas valide</font>
-        </div>
+      <div>
+        <font color="red">L'email est requis</font>
       </div>
--->
+    </div>
+
     <p>
       <input
         type="password"
