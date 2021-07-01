@@ -111,8 +111,12 @@ public class QuizRestController {
 		}
 		
 		// Ecrire algo choix aleatoire
-		List<Question> listeQuestions = questionService.getAll(); 
-		quiz.setQuestions(listeQuestions);
+//		List<Question> listeQuestions = questionService.getAll();
+//		List<Question> selectQuestions = new ArrayList();
+//		for(int i=20;i<30;i++) {
+//			selectQuestions.add(listeQuestions.get(i));
+//		}
+//		quiz.setQuestions(selectQuestions);
 		
 //		Personne personne = persoSpring.getPersonne();
 //		

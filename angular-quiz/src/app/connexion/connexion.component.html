@@ -1,5 +1,7 @@
 <h1 style="text-align: center">Connexion</h1>
+
 <div class="login">
+  <div *ngIf="message != ''" class="alert alert-danger">{{ message }}</div>
   <h2 class="login-header">S'identifier</h2>
   <form
     [formGroup]="loginForm"

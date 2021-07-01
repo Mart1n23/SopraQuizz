@@ -1,3 +1,4 @@
+import { LoginService } from './../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -6,7 +7,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ConnexionService } from '../connexion.service';
 
 @Component({
   selector: 'app-connexion',
@@ -16,8 +16,10 @@ import { ConnexionService } from '../connexion.service';
 export class ConnexionComponent implements OnInit {
   loginForm!: FormGroup;
   isSubmitted = false;
+  message:string ='';
+
   constructor(
-    private ConnexionService: ConnexionService,
+    private loginService: LoginService,
     private router: Router,
     private formBuilder: FormBuilder
   ) {}
@@ -27,7 +29,7 @@ export class ConnexionComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(6),
+        //Validators.minLength(6),
       ]),
     });
   }
@@ -35,13 +37,27 @@ export class ConnexionComponent implements OnInit {
     return this.loginForm.controls;
   }
   seConnecter() {
-    console.log(this.loginForm.value);
+    //console.log(this.loginForm.value.email);
     this.isSubmitted = true;
     if (this.loginForm.invalid) {
       return;
     }
-    this.ConnexionService.seConnecter(this.loginForm.value);
+    //this.ConnexionService.seConnecter(this.loginForm.value);
+    this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(
+      (result) => {
+        localStorage.setItem('login', this.loginForm.value.email);
+        localStorage.setItem(
+          'auth',
+          'Basic ' + btoa(this.loginForm.value.email + ':' + this.loginForm.value.password)
+        );
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        this.message = 'Informations de connexion incorrectes';
+      }
+    );
   }
+
   /*
   checkMail(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {

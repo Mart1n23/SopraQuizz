@@ -14,14 +14,14 @@ export class LoginService {
       'Content-Type': 'application/json',
       Authorization: 'Basic ' + btoa(`${login}:${password}`),
     });
-    return this.http.get<boolean>('http://localhost:8080/boot/api/login', {
+    return this.http.get<boolean>('http://localhost:8081/boot/api/login', {
       headers: header,
     });
   }
 
-  public signUp(personne: Personne): Observable<any> {
-    return this.http.post('http://localhost:8080/boot/api/personne', {
+  /*public signUp(personne: Personne): Observable<any> {
+    return this.http.post('http://localhost:8081/boot/api/personne', {
       personne,
     });
-  }
+  }*/
 }

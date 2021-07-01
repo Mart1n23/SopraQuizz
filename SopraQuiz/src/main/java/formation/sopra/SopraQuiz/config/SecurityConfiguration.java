@@ -31,18 +31,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.and()
 				.authorizeRequests()
 					.antMatchers(HttpMethod.OPTIONS).anonymous() //angular envoie une requête OPTIONS automatiquement, il faut donc l'autoriser !
-					.antMatchers(HttpMethod.POST, "/api/personne").anonymous()
-					.antMatchers(HttpMethod.DELETE, "/api/question/**").hasRole("ADMIN")
-					.antMatchers(HttpMethod.DELETE, "/api/quiz/**").hasRole("ADMIN")
-					.antMatchers("/api","/api/**").authenticated()
-//					.antMatchers("/api","/api/**").permitAll()
+//					.antMatchers(HttpMethod.POST, "/api/personne").anonymous()
+//					.antMatchers(HttpMethod.DELETE, "/api/question/**").hasRole("ADMIN")
+//					.antMatchers(HttpMethod.DELETE, "/api/quiz/**").hasRole("ADMIN")
+//					.antMatchers("/api","/api/**").authenticated()
+					.antMatchers("/api","/api/**").permitAll()
 				.and()
 				.httpBasic()
 			.and()
 			.antMatcher("/**").
 				authorizeRequests().
-					antMatchers("/","/home","/personne/inscription","/personne/save").permitAll().					
+					antMatchers("/**" /*,"/home","/personne/inscription","/personne/save"*/).permitAll().					
 					anyRequest().authenticated().
+//					anyRequest().permitAll().
 				and().
 				formLogin().
 					loginPage("/login").
