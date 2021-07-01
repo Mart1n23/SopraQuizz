@@ -1,8 +1,6 @@
 import { Personne } from '../personne';
-import { PersonneComponent } from './../personne/personne.component';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Validators, FormControl } from '@angular/forms';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -11,25 +9,38 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./inscription.component.css'],
 })
 export class InscriptionComponent implements OnInit {
-  registerForm!: FormGroup;
+  registerForm: FormGroup = new FormGroup({});
   loading = false;
   submitted = false;
   personne: Personne = new Personne();
   @Output('inscription')
   inscription: EventEmitter<Personne> = new EventEmitter<Personne>();
-  formBuilder: any;
-  constructor() {}
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      firstName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+      ]),
+      lastName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+      ]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      confirmPassword: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+      ]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+      ]),
     });
   }
   send() {
-    this.inscription.emit(this.personne);
-    this.personne = new Personne();
+    console.log(this.registerForm);
+    //this.inscription.emit(this.personne);
+    this.personne = new Personne(...this.registerForm.value);
   }
 }

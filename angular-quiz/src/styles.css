@@ -590,6 +590,11 @@ progress {
   margin-bottom: 0;
 }
 
+.para-titre {
+  color: red;
+  font-size: 35px;
+  text-align: center;
+}
 .blockquote-footer {
   margin-top: -1rem;
   margin-bottom: 1rem;
@@ -2053,7 +2058,7 @@ progress {
 }
 
 .table-primary {
-  --bs-table-bg: #7b38d8;
+  --bs-table-bg: #d1f2eb;
   --bs-table-striped-bg: #c7e6df;
   --bs-table-striped-color: #000;
   --bs-table-active-bg: #bcdad4;
@@ -3709,9 +3714,8 @@ fieldset:disabled .btn {
 }
 
 .btn-link {
-  font-weight: 400;
-  color: #1abc9c;
-  text-decoration: underline;
+  font-weight: 800;
+  color: #ffffff;
 }
 .btn-link:hover {
   color: #15967d;
@@ -4172,6 +4176,11 @@ fieldset:disabled .btn {
 .btn-group-vertical > .btn-group:not(:first-child) > .btn {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.navbar {
+  background-color: cadetblue;
+  height: 50px;
 }
 
 .nav {
@@ -11473,4 +11482,25 @@ html {
 
 .copyright {
   background-color: #1a252f;
+}
+
+.boxed {
+  border: 3px solid black;
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 5%;
+}
+
+.rep-boxed {
+  border: 3px solid black;
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 5%;
+}
+
+.img-size {
+  height: 100px;
+  width: 180px;
 }

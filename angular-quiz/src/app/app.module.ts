@@ -1,3 +1,5 @@
+import { DerouleQuizComponent } from './deroule-quiz/deroule-quiz.component';
+import { IntroQuizzComponent } from './intro-quizz/intro-quizz.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -6,7 +8,6 @@ import { HomeComponent } from './home/home.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { ResauxComponent } from './resaux/resaux.component';
-import { QuizsComponent } from './quizs/quizs.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule, routes } from './routes';
 import { ClassementComponent } from './classement/classement.component';
@@ -26,7 +27,6 @@ import { AdminComponent } from './admin/admin.component';
     ConnexionComponent,
     HomeComponent,
     ResauxComponent,
-    QuizsComponent,
     ClassementComponent,
     UtilisateurComponent,
     ErreurComponent,
@@ -35,6 +35,8 @@ import { AdminComponent } from './admin/admin.component';
     NotlogedComponent,
     CompteComponent,
     AdminComponent,
+    IntroQuizzComponent,
+    DerouleQuizComponent,
   ],
   imports: [
     BrowserModule,
