@@ -21,14 +21,12 @@
     >
       <font color="red">L'email est requis</font>
     </div>
-
     <div
       class="help-block"
       *ngIf="formControls.email.dirty && formControls.email.hasError('email')"
     >
       <font color="red">L'email n'est pas valide</font>
     </div>
-
     <p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
       <input
         type="password"
@@ -36,14 +34,12 @@
         formControlName="password"
       />
     </p>
-
     <div
       class="help-block"
       *ngIf="!loginForm.value.password && formControls.password.touched"
     >
       <font color="red">Mot de passe requis</font>
     </div>
-
     <p>
       <input type="submit" value="Log in" />
     </p>
