@@ -37,8 +37,13 @@ import { FinalQuizComponent } from './final-quiz/final-quiz.component';
     CompteComponent,
     AdminComponent,
     IntroQuizzComponent,
+<<<<<<< HEAD
     FinalQuizComponent,
     DerouleQuizComponent,
+=======
+    DerouleQuizComponent,
+    FinalQuizComponent,
+>>>>>>> main
   ],
   imports: [
     BrowserModule,
