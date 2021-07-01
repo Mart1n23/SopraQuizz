@@ -3,12 +3,17 @@
   <h2 class="login-header">Creation d'un nouveau compte</h2>
   <form class="login-container" [formGroup]="registerForm" (ngSubmit)="send()">
     <p>
-      <input type="prenom" placeholder="Prenom" formControlName="firstName" />
+      <input
+        type="prenom"
+        placeholder="Prenom"
+        formControlName="firstName"
+        autocomplete="username"
+      />
     </p>
 
     <div
       class="help-block"
-      *ngIf="!registerForm.value.firstName && registerForm.touched"
+      *ngIf="!registerForm.value.firstName && formControls.firstName.touched"
     >
       <font color="red">Le prenom est requis</font>
     </div>
@@ -19,7 +24,7 @@
 
     <div
       class="help-block"
-      *ngIf="!registerForm.value.lastName && registerForm.touched"
+      *ngIf="!registerForm.value.lastName && formControls.lastName.touched"
     >
       <font color="red">Le nom est requis</font>
     </div>
@@ -28,16 +33,22 @@
       <input type="email" placeholder="Email" formControlName="email" />
     </p>
 
-    <div class="help-block" *ngIf="isSubmitted && formControls.email.errors">
-      <font color="red">L'email n'est pas valide</font>
-    </div>
     <div
       class="help-block"
-      *ngIf="formControls.email.errors && formControls.email.touched"
+      *ngIf="
+        formControls.email.errors &&
+        formControls.email.touched &&
+        !(formControls.email.dirty && formControls.email.hasError('email'))
+      "
     >
-      <div>
-        <font color="red">L'email est requis</font>
-      </div>
+      <font color="red">L'email est requis</font>
+    </div>
+
+    <div
+      class="help-block"
+      *ngIf="formControls.email.dirty && formControls.email.hasError('email')"
+    >
+      <font color="red">L'email n'est pas valide</font>
     </div>
 
     <p>
@@ -45,16 +56,28 @@
         type="password"
         placeholder="Mot de passe"
         formControlName="password"
+        autocomplete="new-password"
       />
     </p>
 
     <div
       class="help-block"
-      *ngIf="!registerForm.value.password && registerForm.touched"
+      *ngIf="!registerForm.value.password && formControls.password.touched"
     >
       <font color="red">Mot de passe requis</font>
     </div>
 
+    <div
+      class="help-block"
+      *ngIf="
+        formControls.password.dirty &&
+        formControls.password.hasError('minlength')
+      "
+    >
+      <font color="red">Le mot de passe doit faire plus de 6 charactères</font>
+    </div>
+
+    <!--
     <p>
       <input
         type="password"
@@ -63,15 +86,16 @@
       />
     </p>
 
-    <div
-      class="help-block"
-      *ngIf="!registerForm.value.confirmPassword && registerForm.touched"
-    >
+    <div class="help-block" *ngIf="!registerForm.value.confirmPassword">
       <font color="red">Le mot de passe ne correspond pas</font>
     </div>
-
+-->
     <p>
-      <input type="submit" value="Enregistrement" />
+      <input
+        type="submit"
+        value="Enregistrement"
+        [disabled]="registerForm.invalid"
+      />
     </p>
   </form>
 </div>
