@@ -1,3 +1,4 @@
+import { FinalQuizComponent } from './final-quiz/final-quiz.component';
 import { CompteComponent } from './compte/compte.component';
 import { ResauxComponent } from './resaux/resaux.component';
 import { ClassementComponent } from './classement/classement.component';
@@ -16,12 +17,14 @@ export const routes: Routes = [
   { path: 'classement', component: ClassementComponent },
   { path: 'connexion', component: ConnexionComponent },
   { path: 'admin', component: AdminComponent },
-  { path: 'quiz', component: QuizsComponent },
+  { path: 'quizs', component: QuizsComponent },
   { path: 'inscription', component: InscriptionComponent },
   { path: 'compte', component: CompteComponent },
   { path: 'resaux', component: ResauxComponent },
   { path: 'intro-quizz', component: IntroQuizzComponent },
   { path: 'deroule-quiz', component: DerouleQuizComponent },
+  { path: 'final-quiz', component: FinalQuizComponent },
+
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 @NgModule({
