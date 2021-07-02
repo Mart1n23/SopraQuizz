@@ -30,7 +30,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) //autorise des requêtes sans que l'utilisateur n'ait de session sur le serveur
 				.and()
 				.authorizeRequests()
-					.antMatchers(HttpMethod.OPTIONS).anonymous() //angular envoie une requête OPTIONS automatiquement, il faut donc l'autoriser !
+//					.antMatchers(HttpMethod.OPTIONS).anonymous() //angular envoie une requête OPTIONS automatiquement, il faut donc l'autoriser !
 //					.antMatchers(HttpMethod.POST, "/api/personne").anonymous()
 //					.antMatchers(HttpMethod.DELETE, "/api/question/**").hasRole("ADMIN")
 //					.antMatchers(HttpMethod.DELETE, "/api/quiz/**").hasRole("ADMIN")

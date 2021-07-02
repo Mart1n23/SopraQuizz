@@ -1,0 +1,19 @@
+<form (ngSubmit)="save()">
+  <div class="boxed">
+    <h4 style="margin-left: 5%">Question:</h4>
+    <p style="margin-left: 5%"></p>
+    <h5 style="margin-left: 5%">{{ question.intitule }}</h5>
+  </div>
+  <div class="rep-boxed">
+    <div id="global">
+      <select size="4" class="form-control" [formControl]="reponseCtrl">
+        <option value="1" checked>{{ question.reponse1 }}</option>
+        <option value="2">{{ question.reponse2 }}</option>
+        <option value="3">{{ question.reponse3 }}</option>
+        <option value="4">{{ question.reponse4 }}</option>
+      </select>
+    </div>
+  </div>
+  <!--<button style="margin-left: 40%">Abandonner</button>-->
+  <button style="margin-left: 60%" type="submit">Valider</button>
+</form>

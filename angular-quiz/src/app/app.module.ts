@@ -21,6 +21,7 @@ import { NotlogedComponent } from './notloged/notloged.component';
 import { CompteComponent } from './compte/compte.component';
 import { AdminComponent } from './admin/admin.component';
 import { FinalQuizComponent } from './final-quiz/final-quiz.component';
+import { QuizQuestionComponent } from './quiz-question/quiz-question.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { FinalQuizComponent } from './final-quiz/final-quiz.component';
     IntroQuizzComponent,
     FinalQuizComponent,
     DerouleQuizComponent,
+    QuizQuestionComponent,
   ],
   imports: [
     BrowserModule,
