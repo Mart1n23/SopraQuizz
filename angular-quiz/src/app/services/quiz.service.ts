@@ -4,13 +4,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class QuizService {
   private static URL = 'http://localhost:8081/boot/api/quiz';
   private httpHeader: HttpHeaders = new HttpHeaders();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   private initHeader() {
     const auth = localStorage.getItem('auth');
@@ -29,21 +29,21 @@ export class QuizService {
 
   public get(id: number): Observable<Quiz> {
     this.initHeader();
-    return this.http.get<Quiz>(QuizService.URL+ '/' + id, {
+    return this.http.get<Quiz>(QuizService.URL + '/' + id, {
       headers: this.httpHeader,
     });
   }
 
   public getWithQuestions(id: number): Observable<Quiz> {
     this.initHeader();
-    return this.http.get<Quiz>(QuizService.URL+ '/' + id + '/question', {
+    return this.http.get<Quiz>(QuizService.URL + '/' + id + '/question', {
       headers: this.httpHeader,
     });
   }
 
   public delete(id: number): Observable<void> {
     this.initHeader();
-    return this.http.delete<void>(QuizService.URL+ '/' + id, {
+    return this.http.delete<void>(QuizService.URL + '/' + id, {
       headers: this.httpHeader,
     });
   }
@@ -55,7 +55,7 @@ export class QuizService {
       niveau: quiz.niveau,
       ranked: quiz.ranked,
       questions: quiz.questions,
-    }
+    };
     return this.http.post<Quiz>(QuizService.URL, quizFormate, {
       headers: this.httpHeader,
     });
@@ -63,7 +63,7 @@ export class QuizService {
 
   public update(quiz: Quiz): Observable<Quiz> {
     this.initHeader();
-    return this.http.put<Quiz>(QuizService.URL+ '/' + quiz.id, quiz, {
+    return this.http.put<Quiz>(QuizService.URL + '/' + quiz.id, quiz, {
       headers: this.httpHeader,
     });
   }
